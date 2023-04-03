@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish-cli-win-exe",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/src/Fabaceae.CLI",
+                "--output=${workspaceFolder}/out",
+                "--configuration=Release",
+                "--runtime=win-x64",
+                "--self-contained",
+                "-p:PublishSingleFile=true"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
