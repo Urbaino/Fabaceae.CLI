@@ -1,6 +1,6 @@
 # `Fabaceae.CLI`
 
-Following A Budget using Account Codes, Easy and Accessible to Everyone! Fabaceae is also the latin name for the Bean family of plants (shout out to Beancount).
+Following A Budget using Account Codes, Easy and Accessible to Everyone! Fabaceae is also the latin name for the Bean family of plants (shout-out to Beancount).
 
 This project aims to simplify the process of extracting data from your bank and using it with your Plain Text Accounting (PTA) engine of choice. These tools help you analyse your data and create reports, but the process of adding that data can be tedious. Just tell `Fabaceae` where to find your accounts and how your bank statement is structured and from that day you can drag and drop your bank statements and it will be ready for analysis in no time!
 
@@ -79,6 +79,10 @@ There are VSCode tasks set up for build and publish that you can use.
 ### CI and Releases
 
 There will be binaries available for those who just want to use the tool.
+
+### Tests
+
+Obviously.
 
 ### Wider support for specific tools
 
