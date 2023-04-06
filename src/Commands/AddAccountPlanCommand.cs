@@ -19,5 +19,4 @@ internal sealed class AddAccountPlanCommand : AsyncCommand<AddAccountPlanCommand
 
         return 0;
     }
-
 }

@@ -17,7 +17,7 @@ internal sealed class ExcelReader
                 new Post(
                     row.Cell(Config.dateColumnIndex).GetString(),
                     row.Cell(Config.descriptionColumnIndex).GetString(),
-                    Decimal.Parse(row.Cell(Config.amountColumnIndex).GetString()),
+                    decimal.Parse(row.Cell(Config.amountColumnIndex).GetString()),
                     Config.accountName,
                     Config.commentColumnIndex.HasValue ? row.Cell(Config.commentColumnIndex.Value).GetString() : string.Empty
                 )

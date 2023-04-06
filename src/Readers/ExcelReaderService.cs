@@ -23,5 +23,4 @@ internal sealed class ExcelReaderService : IExcelReaderService
         => Readers.FirstOrDefault(r => r.name.Equals(readerParam, StringComparison.OrdinalIgnoreCase));
 
     public IEnumerable<ExcelReaderConfig> Readers => ConfigurationService.Configuration.Readers;
-
 }

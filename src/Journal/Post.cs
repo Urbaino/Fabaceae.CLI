@@ -14,5 +14,4 @@ public record Post
     public decimal Amount { get; }
     public string Account { get; }
     public string Comment { get; }
-
 }

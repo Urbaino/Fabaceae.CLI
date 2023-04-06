@@ -77,7 +77,7 @@ dotnet_diagnostic.CA1032.severity = none
 dotnet_diagnostic.CA1826.severity = none
 
 # RCS1079: Throwing of new NotImplementedException.
-dotnet_diagnostic.RCS1079.severity = warning
+dotnet_diagnostic.RCS1079.severity = none
 
 # RCS1057: Add empty line between declarations.
 dotnet_diagnostic.RCS1057.severity = none
@@ -99,3 +99,45 @@ dotnet_diagnostic.RCS1047.severity = none
 
 # RCS1090: Call 'ConfigureAwait(false)'.
 dotnet_diagnostic.RCS1090.severity = warning
+
+# SA1518: Use line endings correctly at end of file
+dotnet_diagnostic.SA1518.severity = none
+
+# SA1512: Single-line comments should not be followed by blank line
+dotnet_diagnostic.SA1512.severity = none
+
+# IDE0011: Add braces
+dotnet_diagnostic.IDE0011.severity = none
+
+# SA1503: Braces should not be omitted
+dotnet_diagnostic.SA1503.severity = none
+
+# SA1600: Elements should be documented
+dotnet_diagnostic.SA1600.severity = none
+
+# SA1500: Braces for multi-line statements should not share line
+dotnet_diagnostic.SA1500.severity = none
+
+# SA1413: Use trailing comma in multi-line initializers
+dotnet_diagnostic.SA1413.severity = none
+
+# SA1502: Element should not be on a single line
+dotnet_diagnostic.SA1502.severity = none
+
+# SA1306: Field names should begin with lower-case letter
+dotnet_diagnostic.SA1306.severity = none
+
+# SA1300: Element should begin with upper-case letter
+dotnet_diagnostic.SA1300.severity = none
+
+# SA1009: Closing parenthesis should be spaced correctly
+dotnet_diagnostic.SA1009.severity = none
+
+# SA1111: Closing parenthesis should be on line of last parameter
+dotnet_diagnostic.SA1111.severity = none
+
+# CS1591: Missing XML comment for publicly visible type or member
+dotnet_diagnostic.CS1591.severity = none
+
+# SA1602: Enumeration items should be documented
+dotnet_diagnostic.SA1602.severity = none
