@@ -27,5 +27,4 @@ public class DefaultOutputService : IOutputService
     }
 
     public bool OutputFileExists => File.Exists(OutputFileName);
-
 }

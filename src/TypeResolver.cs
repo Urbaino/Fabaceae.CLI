@@ -1,6 +1,6 @@
-using Spectre.Console.Cli;
+// https://github.com/spectreconsole/spectre.console/blob/main/examples/Cli/Injection/Infrastructure/TypeResolver.cs
 
-//https://github.com/spectreconsole/spectre.console/blob/main/examples/Cli/Injection/Infrastructure/TypeResolver.cs
+using Spectre.Console.Cli;
 
 public sealed class TypeResolver : ITypeResolver, IDisposable
 {

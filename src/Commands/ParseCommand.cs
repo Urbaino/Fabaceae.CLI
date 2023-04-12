@@ -98,7 +98,6 @@ internal sealed class ParseCommand : AsyncCommand<ParseCommandSettings>
             AnsiConsole.Prompt(new TextPrompt<string>("Press enter to exit.").AllowEmpty().Secret(null));
             return 1;
         }
-
     }
 
     private Rows Intro()
@@ -134,7 +133,7 @@ internal sealed class ParseCommand : AsyncCommand<ParseCommandSettings>
                 .Width(60)
                 .AddItem("Posts", journal.Posts.Count, Color.Green)
                 .AddItem("Done", count, Color.Green1),
-            new Grid().AddColumns(3).AddRow(new[]{
+            new Grid().AddColumns(3).AddRow(new[] {
                 new Text(post.Date.ToShortDateString(), new Style(Color.Yellow)),
                 new Text(post.Description, new Style(Color.Cyan1)),
                 new Text(post.Amount.ToString("C"), new Style(post.Amount > 0 ? Color.Green : Color.Red))

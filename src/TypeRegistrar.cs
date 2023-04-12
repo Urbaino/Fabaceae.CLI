@@ -1,7 +1,7 @@
+// https://github.com/spectreconsole/spectre.console/blob/main/examples/Cli/Injection/Infrastructure/TypeRegistrar.cs
+
 using Microsoft.Extensions.DependencyInjection;
 using Spectre.Console.Cli;
-
-//https://github.com/spectreconsole/spectre.console/blob/main/examples/Cli/Injection/Infrastructure/TypeRegistrar.cs
 
 public sealed class TypeRegistrar : ITypeRegistrar
 {

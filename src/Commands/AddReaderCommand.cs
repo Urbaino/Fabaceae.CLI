@@ -30,5 +30,4 @@ internal sealed class AddReaderCommand : AsyncCommand<AddReaderCommandSettings>
 
         return 0;
     }
-
 }
