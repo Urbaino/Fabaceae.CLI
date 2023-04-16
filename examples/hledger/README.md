@@ -69,3 +69,11 @@ In order to properly read your bank statement you need to add it to the configur
 ### Output
 
 When you have selected an account code for each of the transactions in your statement, a file will be created named after the earliest date in your statement followed by the reader name (`2022-12-30.demobank.journal`). You need to import this file in your PTA journal to be able to generate reports.
+
+### Report
+
+To generate a simple expense report from the result of this file, you can run:
+
+```
+hledger balance -f 2022-12-30.demobank.journal Expenses
+```
