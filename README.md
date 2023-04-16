@@ -36,7 +36,7 @@ Optionally you can supply the name of the reader you wish to use via the `-r <re
 
 To build and run it from source you need the [.NET 7 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/7.0). 
 
-To build and run, execute the following commands in the `/src` directory.
+To build and run, execute the following commands in the root directory.
 
 ```
 dotnet build src
