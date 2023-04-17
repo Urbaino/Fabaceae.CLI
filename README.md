@@ -1,4 +1,4 @@
-# `Fabaceae.CLI`
+# `Fabaceae`
 
 Following A Budget using Account Codes, Easy and Accessible to Everyone! Fabaceae is also the latin name for the Bean family of plants (shout-out to Beancount).
 
@@ -23,27 +23,8 @@ Also:
  
 ### Setup
 
-You need a file containing the accounts you use in your accounting. Supply a file name to the CLI using the `add accounts <path>` command and it will save it for later, or you can supply it at runtime using the `-a <path>` option. The account plan is assumed to be either in the same folder as the bank statement or the current working directory and will search for it in that order.
 
-The account hierarchy is determined via `:` as shown in the example below:
-
-```plain
-account Assets:Bank
-    
-account Income:Salary
-
-account Liabilities:CreditCard
-
-account Expenses:Food
-account Expenses:Rent
-account Expenses:Utilities
-account Expenses:Leisure    
-account Expenses:Other
-```
-
-You are free to set this up however you like, with the exception that you need to use at least two levels of hierarchy.
-
-In order to properly read your bank statement you need to add it to the configuration using the `add reader <name>` command. You will be prompted for the different values requrired, or you can supply them via options (use `add reader -h` for details). The config will be saved under the supplied name so that you can easily use it again.
+For a working example, please see the [example using hledger](examples/hledger/README.md).
 
 ### Running
 
@@ -55,17 +36,17 @@ Optionally you can supply the name of the reader you wish to use via the `-r <re
 
 To build and run it from source you need the [.NET 7 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/7.0). 
 
-To build and run, execute the following commands in the `/src` directory.
+To build and run, execute the following commands in the root directory.
 
 ```
-dotnet build
-dotnet run -- -h
+dotnet build src
+dotnet run --project ./src/Fabaceae.CLI.csproj -- -h
 ```
 
 If you want to deploy and use it standalone (on windows):
 
 ```
-dotnet publish --output=out --configuration=Release --runtime=win-x64 --self-contained -p:PublishSingleFile=true 
+dotnet publish ./src/Fabaceae.CLI.csproj --output=out --configuration=Release --runtime=win-x64 --self-contained -p:PublishSingleFile=true 
 ```
 
 ### Visual Studio Code

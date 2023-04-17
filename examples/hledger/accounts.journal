@@ -1,0 +1,11 @@
+account Assets:Bank
+    
+account Income:Salary
+
+account Liabilities:CreditCard
+
+account Expenses:Food
+account Expenses:Rent
+account Expenses:Utilities
+account Expenses:Leisure    
+account Expenses:Other
