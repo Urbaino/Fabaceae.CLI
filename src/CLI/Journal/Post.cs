@@ -1,3 +1,5 @@
+namespace Fabaceae.CLI;
+
 public record Post
 {
     public Post(string date, string description, decimal amount, string account, string comment)

@@ -1,9 +1,11 @@
+namespace Fabaceae.CLI;
+
 public record ExcelReaderConfig(
-    string name,
-    string accountName,
-    int dateColumnIndex = 0,
-    int descriptionColumnIndex = 1,
-    int amountColumnIndex = 3,
-    int? commentColumnIndex = null,
-    int skipRows = 0
+    string Name,
+    string AccountName,
+    int DateColumnIndex = 0,
+    int DescriptionColumnIndex = 1,
+    int AmountColumnIndex = 3,
+    int? CommentColumnIndex = null,
+    int SkipRows = 0
 );

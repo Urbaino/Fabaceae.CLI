@@ -1,3 +1,5 @@
+namespace Fabaceae.CLI;
+
 public interface IConfigState
 {
     string AccountPlanFileName { get; }

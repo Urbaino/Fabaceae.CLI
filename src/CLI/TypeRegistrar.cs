@@ -1,5 +1,7 @@
 // https://github.com/spectreconsole/spectre.console/blob/main/examples/Cli/Injection/Infrastructure/TypeRegistrar.cs
 
+namespace Fabaceae.CLI;
+
 using Microsoft.Extensions.DependencyInjection;
 using Spectre.Console.Cli;
 
@@ -34,6 +36,6 @@ public sealed class TypeRegistrar : ITypeRegistrar
             throw new ArgumentNullException(nameof(func));
         }
 
-        _builder.AddSingleton(service, (provider) => func());
+        _builder.AddSingleton(service, (_) => func());
     }
 }

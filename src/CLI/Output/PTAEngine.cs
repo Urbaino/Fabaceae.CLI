@@ -1,3 +1,5 @@
+namespace Fabaceae.CLI;
+
 public enum PTAEngine
 {
     Default = 1,

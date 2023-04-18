@@ -1,25 +1,27 @@
+namespace Fabaceae.CLI;
+
 using ClosedXML.Excel;
 
 internal sealed class ExcelReader
 {
-    private readonly IXLWorksheet Sheet;
-    private readonly ExcelReaderConfig Config;
+    private readonly IXLWorksheet _sheet;
+    private readonly ExcelReaderConfig _config;
 
     internal ExcelReader(IXLWorksheet sheet, ExcelReaderConfig config)
     {
-        Sheet = sheet;
-        Config = config;
+        _sheet = sheet;
+        _config = config;
     }
 
     public Journal BuildJournal(IAccount accountRoot)
-        => new Journal(accountRoot, Config.name,
-            Sheet.Rows().Skip(Config.skipRows).Select(row =>
+        => new(accountRoot, _config.Name,
+            _sheet.Rows().Skip(_config.SkipRows).Select(row =>
                 new Post(
-                    row.Cell(Config.dateColumnIndex).GetString(),
-                    row.Cell(Config.descriptionColumnIndex).GetString(),
-                    decimal.Parse(row.Cell(Config.amountColumnIndex).GetString()),
-                    Config.accountName,
-                    Config.commentColumnIndex.HasValue ? row.Cell(Config.commentColumnIndex.Value).GetString() : string.Empty
+                    row.Cell(_config.DateColumnIndex).GetString(),
+                    row.Cell(_config.DescriptionColumnIndex).GetString(),
+                    decimal.Parse(row.Cell(_config.AmountColumnIndex).GetString()),
+                    _config.AccountName,
+                    _config.CommentColumnIndex.HasValue ? row.Cell(_config.CommentColumnIndex.Value).GetString() : string.Empty
                 )
             ).ToArray()
         );

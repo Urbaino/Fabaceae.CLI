@@ -1,3 +1,5 @@
+namespace Fabaceae.CLI;
+
 internal sealed class Journal
 {
     public Journal(IAccount accounts, string fileType, IReadOnlyCollection<Post> posts)
@@ -11,5 +13,5 @@ internal sealed class Journal
     public string FileType { get; }
     public IReadOnlyCollection<Post> Posts { get; }
 
-    public string OutputFileName => $"{Posts.First().Date.ToShortDateString()}.{FileType.ToString().ToLowerInvariant()}.journal";
+    public string OutputFileName => $"{Posts.First().Date.ToShortDateString()}.{FileType.ToLowerInvariant()}.journal";
 }

@@ -1,3 +1,5 @@
+namespace Fabaceae.CLI;
+
 internal class OutputServiceFactory
 {
     public IOutputService Create(PTAEngine type, Journal journal)

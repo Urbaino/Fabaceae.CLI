@@ -1,3 +1,5 @@
+namespace Fabaceae.CLI;
+
 using System.ComponentModel;
 using Spectre.Console.Cli;
 

@@ -1,12 +1,11 @@
-using System.Text.RegularExpressions;
-
+namespace Fabaceae.CLI;
 internal sealed class AccountFactory
 {
-    private readonly IConfigurationService ConfigurationService;
+    private readonly IConfigurationService _configurationService;
 
     public AccountFactory(IConfigurationService configurationService)
     {
-        ConfigurationService = configurationService;
+        _configurationService = configurationService;
     }
 
     public Task<Account> CreateAsync(PTAEngine type, string directory, string filenameOverride = "")
@@ -19,7 +18,7 @@ internal sealed class AccountFactory
     private async Task<Account> CreateFromHLedger(string directory, string filenameOverride)
     {
         var fileName = string.IsNullOrWhiteSpace(filenameOverride)
-            ? ConfigurationService.Configuration.AccountPlanFileName
+            ? _configurationService.Configuration.AccountPlanFileName
             : filenameOverride;
 
         var path = Path.Join(directory, fileName);
@@ -39,7 +38,7 @@ internal sealed class AccountFactory
                 var line = await accountPlan.ReadLineAsync();
                 if (string.IsNullOrWhiteSpace(line)) continue;
 
-                var account = Regex.Match(line, @"^account (?:(\w+):?)+(?!:)$");
+                var account = RegexExpressions.Account().Match(line);
                 if (!account.Groups[0].Success) continue;
                 var captures = account.Groups[1].Captures;
 

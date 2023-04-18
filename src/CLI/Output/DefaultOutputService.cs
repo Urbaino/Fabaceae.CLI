@@ -1,10 +1,12 @@
+namespace Fabaceae.CLI;
+
 public class DefaultOutputService : IOutputService
 {
-    private string OutputFileName;
+    private readonly string _outputFileName;
 
     public DefaultOutputService(string outputFileName)
     {
-        OutputFileName = outputFileName;
+        _outputFileName = outputFileName;
     }
 
     public async Task WriteOutputAsync(IEnumerable<KeyValuePair<Post, IAccount>> accountCodedPosts)
@@ -23,8 +25,8 @@ public class DefaultOutputService : IOutputService
             };
         });
 
-        await File.WriteAllLinesAsync(OutputFileName, output);
+        await File.WriteAllLinesAsync(_outputFileName, output);
     }
 
-    public bool OutputFileExists => File.Exists(OutputFileName);
+    public bool OutputFileExists => File.Exists(_outputFileName);
 }

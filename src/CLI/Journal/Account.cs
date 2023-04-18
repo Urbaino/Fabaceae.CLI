@@ -1,3 +1,5 @@
+namespace Fabaceae.CLI;
+
 public interface IAccount
 {
     string Name { get; }
@@ -17,21 +19,21 @@ internal sealed class Account : IAccount
     }
 
     private string ParentFullName { get; } = string.Empty;
-    private IList<IAccount> subAccounts = new List<IAccount>();
+    private readonly IList<IAccount> _subAccounts = new List<IAccount>();
 
     public string Name { get; } = string.Empty;
     public string FullName => $"{ParentFullName}:{Name}".TrimStart(':');
-    public IReadOnlyCollection<IAccount> SubAccounts => subAccounts.AsReadOnly();
+    public IReadOnlyCollection<IAccount> SubAccounts => _subAccounts.AsReadOnly();
 
     public IAccount AddSubAccount(string subAccount)
     {
         var account = new Account(subAccount, FullName);
-        subAccounts.Add(account);
+        _subAccounts.Add(account);
         return account;
     }
 
     public IAccount? this[string accountName]
     {
-        get => subAccounts.FirstOrDefault(a => a.Name.Equals(accountName, StringComparison.OrdinalIgnoreCase));
+        get => _subAccounts.FirstOrDefault(a => a.Name.Equals(accountName, StringComparison.OrdinalIgnoreCase));
     }
 }

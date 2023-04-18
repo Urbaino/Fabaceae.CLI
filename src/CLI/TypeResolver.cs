@@ -1,5 +1,7 @@
 // https://github.com/spectreconsole/spectre.console/blob/main/examples/Cli/Injection/Infrastructure/TypeResolver.cs
 
+namespace Fabaceae.CLI;
+
 using Spectre.Console.Cli;
 
 public sealed class TypeResolver : ITypeResolver, IDisposable

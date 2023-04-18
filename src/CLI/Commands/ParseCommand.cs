@@ -1,3 +1,5 @@
+namespace Fabaceae.CLI;
+
 using System.Diagnostics.CodeAnalysis;
 using ClosedXML.Excel;
 using Spectre.Console;
@@ -25,11 +27,11 @@ internal sealed class ParseCommand : AsyncCommand<ParseCommandSettings>
 
             var accountPlan = await AnsiConsole.Status()
                 .Spinner(Spinner.Known.Moon)
-                .StartAsync("Reading accounts...", ctx => _accountFactory.CreateAsync(PTAEngine.HLedger, Path.GetDirectoryName(settings.Path) ?? string.Empty, settings.AccountPlanFileName));
+                .StartAsync("Reading accounts...", _ => _accountFactory.CreateAsync(PTAEngine.HLedger, Path.GetDirectoryName(settings.Path) ?? string.Empty, settings.AccountPlanFileName));
 
             var sheet = await AnsiConsole.Status()
                 .Spinner(Spinner.Known.Moon)
-                .StartAsync("Reading spreadsheet...", ctx => Task.Run(() =>
+                .StartAsync("Reading spreadsheet...", _ => Task.Run(() =>
                 {
                     var workbook = new XLWorkbook(settings.Path);
                     return workbook.Worksheets.First();
@@ -41,7 +43,7 @@ internal sealed class ParseCommand : AsyncCommand<ParseCommandSettings>
                 try
                 {
                     var reader = DetermineReader(settings.Reader);
-                    AnsiConsole.Write(new Rows(new Text($"Reading spreadsheet using '{reader.name}'", new Style(Color.Yellow))));
+                    AnsiConsole.Write(new Rows(new Text($"Reading spreadsheet using '{reader.Name}'", new Style(Color.Yellow))));
                     journal = new ExcelReader(sheet, reader).BuildJournal(accountPlan);
                 }
                 catch (Exception ex)
@@ -87,7 +89,7 @@ internal sealed class ParseCommand : AsyncCommand<ParseCommandSettings>
 
             // Display summary and prompt for exit
             AnsiConsole.Clear();
-            AnsiConsole.Write(Summary(journal, accountCodedPosts));
+            AnsiConsole.Write(Summary(accountCodedPosts));
             AnsiConsole.Prompt(new TextPrompt<string>("Press enter to exit.").AllowEmpty().Secret(null));
 
             return 0;
@@ -100,15 +102,15 @@ internal sealed class ParseCommand : AsyncCommand<ParseCommandSettings>
         }
     }
 
-    private Rows Intro()
-        => new Rows(
+    private static Rows Intro()
+        => new(
             new FigletText("Fabaceae")
                 .LeftJustified()
                 .Color(Color.Cyan1),
             new Text("Time to do some accounting!", new Style(Color.Cyan1))
         );
 
-    private Grid SetupSummary(ParseCommandSettings settings, Journal journal, IOutputService outputService)
+    private static Grid SetupSummary(ParseCommandSettings settings, Journal journal, IOutputService outputService)
         => new Grid().AddColumns(2)
             .AddRow(
                 new Text("File", new Style(Color.Yellow)),
@@ -127,7 +129,7 @@ internal sealed class ParseCommand : AsyncCommand<ParseCommandSettings>
                 new Text(journal.OutputFileName, new Style(outputService.OutputFileExists ? Color.Red : Color.Green))
             );
 
-    private IRenderable Progress(Journal journal, Post post, int count)
+    private static IRenderable Progress(Journal journal, Post post, int count)
         => new Rows(
             new BarChart()
                 .Width(60)
@@ -139,7 +141,7 @@ internal sealed class ParseCommand : AsyncCommand<ParseCommandSettings>
                 new Text(post.Amount.ToString("C"), new Style(post.Amount > 0 ? Color.Green : Color.Red))
             }));
 
-    private IRenderable Summary(Journal journal, IEnumerable<KeyValuePair<Post, IAccount>> accountCodedPosts)
+    private static IRenderable Summary(IEnumerable<KeyValuePair<Post, IAccount>> accountCodedPosts)
     {
         var debit = accountCodedPosts.Where(acp => acp.Key.Amount > 0);
         var credit = accountCodedPosts.Where(acp => acp.Key.Amount < 0);
@@ -181,7 +183,7 @@ internal sealed class ParseCommand : AsyncCommand<ParseCommandSettings>
            => items.Select((g, i) => new BreakdownChartItem(g.Key, (double)g.Sum(), colors[i % colors.Count]));
     }
 
-    private SelectionPrompt<IAccount> AccountPrompt(Journal journal)
+    private static SelectionPrompt<IAccount> AccountPrompt(Journal journal)
     {
         var prompt = new SelectionPrompt<IAccount>()
             .Title("Select account")
@@ -210,7 +212,7 @@ internal sealed class ParseCommand : AsyncCommand<ParseCommandSettings>
             return reader;
         }
 
-        AnsiConsole.MarkupLine($"[red]Selected reader could not be found in config.[/]");
+        AnsiConsole.MarkupLine("[red]Selected reader could not be found in config.[/]");
         return AnsiConsole.Prompt(ReaderSelector());
     }
 
@@ -222,5 +224,5 @@ internal sealed class ParseCommand : AsyncCommand<ParseCommandSettings>
             .Mode(SelectionMode.Leaf)
             .MoreChoicesText("[grey](Scroll for more)[/]")
             .AddChoices(_readerService.Readers)
-            .UseConverter(r => r.name);
+            .UseConverter(r => r.Name);
 }

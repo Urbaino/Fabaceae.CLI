@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using Fabaceae.CLI;
 using Microsoft.Extensions.DependencyInjection;
 using Spectre.Console.Cli;
 

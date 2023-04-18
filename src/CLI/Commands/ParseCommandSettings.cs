@@ -1,5 +1,6 @@
+namespace Fabaceae.CLI;
+
 using System.ComponentModel;
-using Spectre.Console;
 using Spectre.Console.Cli;
 
 public sealed class ParseCommandSettings : CommandSettings
@@ -15,9 +16,4 @@ public sealed class ParseCommandSettings : CommandSettings
     [Description("Path to excel file.")]
     [CommandArgument(0, "<path>")]
     public string Path { get; init; } = string.Empty;
-
-    public override ValidationResult Validate()
-    {
-        return base.Validate();
-    }
 }

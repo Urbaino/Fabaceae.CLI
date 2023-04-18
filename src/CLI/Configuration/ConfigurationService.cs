@@ -1,3 +1,5 @@
+namespace Fabaceae.CLI;
+
 using System.Text.Json;
 
 public interface IConfigurationService
@@ -9,7 +11,7 @@ public interface IConfigurationService
 internal class ConfigurationService : IConfigurationService
 {
     private readonly string _configPath;
-    private readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions
+    private readonly JsonSerializerOptions _jsonSerializerOptions = new()
     {
         PropertyNameCaseInsensitive = true,
         WriteIndented = true
@@ -21,7 +23,7 @@ internal class ConfigurationService : IConfigurationService
         _configuration = ReadConfiguration();
     }
 
-    private ConfigState _configuration;
+    private readonly ConfigState _configuration;
     public IConfigState Configuration => _configuration;
 
     public async Task UpdateConfiguration(Action<ConfigState> action, CancellationToken cancellationToken = default)

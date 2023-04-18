@@ -1,3 +1,5 @@
+namespace Fabaceae.CLI;
+
 internal interface IExcelReaderService
 {
     ExcelReaderConfig? GetReader(string readerParam);
@@ -7,20 +9,20 @@ internal interface IExcelReaderService
 
 internal sealed class ExcelReaderService : IExcelReaderService
 {
-    private readonly IConfigurationService ConfigurationService;
+    private readonly IConfigurationService _configurationService;
 
     public ExcelReaderService(IConfigurationService configurationService)
     {
-        ConfigurationService = configurationService;
+        _configurationService = configurationService;
     }
 
     public async Task AddReaderAsync(ExcelReaderConfig config, CancellationToken cancellationToken = default)
     {
-        await ConfigurationService.UpdateConfiguration(c => c.Readers.Add(config), cancellationToken);
+        await _configurationService.UpdateConfiguration(c => c.Readers.Add(config), cancellationToken);
     }
 
     public ExcelReaderConfig? GetReader(string readerParam)
-        => Readers.FirstOrDefault(r => r.name.Equals(readerParam, StringComparison.OrdinalIgnoreCase));
+        => Readers.FirstOrDefault(r => r.Name.Equals(readerParam, StringComparison.OrdinalIgnoreCase));
 
-    public IEnumerable<ExcelReaderConfig> Readers => ConfigurationService.Configuration.Readers;
+    public IEnumerable<ExcelReaderConfig> Readers => _configurationService.Configuration.Readers;
 }
