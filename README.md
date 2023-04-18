@@ -40,13 +40,13 @@ To build and run, execute the following commands in the root directory.
 
 ```
 dotnet build src
-dotnet run --project ./src/Fabaceae.CLI.csproj -- -h
+dotnet run --project ./src/CLI/Fabaceae.CLI.csproj -- -h
 ```
 
 If you want to deploy and use it standalone (on windows):
 
 ```
-dotnet publish ./src/Fabaceae.CLI.csproj --output=out --configuration=Release --runtime=win-x64 --self-contained -p:PublishSingleFile=true 
+dotnet publish ./src/CLI --output=out --configuration=Release --runtime=win-x64 --self-contained -p:PublishSingleFile=true 
 ```
 
 ### Visual Studio Code

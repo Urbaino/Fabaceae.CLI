@@ -14,11 +14,11 @@ To run this example, navigate to this folder and run the following.
 
 ```
 
-dotnet run --project ../../src/Fabaceae.CLI.csproj -- add reader DemoBank --account-name Assets:Bank --date-index 1 --description-index 2 --amount-index 3 --comment-index 4 --skip-rows 4
+dotnet run --project ../../src/CLI/Fabaceae.CLI.csproj -- add reader DemoBank --account-name Assets:Bank --date-index 1 --description-index 2 --amount-index 3 --comment-index 4 --skip-rows 4
 
-dotnet run --project ../../src/Fabaceae.CLI.csproj -- add accounts accounts.journal
+dotnet run --project ../../src/CLI/Fabaceae.CLI.csproj -- add accounts accounts.journal
 
-dotnet run --project ../../src/Fabaceae.CLI.csproj -- statement.xlsx
+dotnet run --project ../../src/CLI/Fabaceae.CLI.csproj -- statement.xlsx
 ```
 
 You can omit all the optional parameters to `add reader` if you wish to add the reader data interactively:
@@ -31,11 +31,11 @@ add reader DemoBank
 If you downloaded the binary you can reference that instead of via `dotnet run`:
 
 ```
-Fabaceae.CLI add reader DemoBank --account-name Assets:Bank --date-index 1 --description-index 2 --amount-index 3 --comment-index 4 --skip-rows 4
+fabaceae add reader DemoBank --account-name Assets:Bank --date-index 1 --description-index 2 --amount-index 3 --comment-index 4 --skip-rows 4
 
-Fabaceae.CLI add accounts accounts.journal
+fabaceae add accounts accounts.journal
 
-Fabaceae.CLI statement.xlsx
+fabaceae statement.xlsx
 ```
 
 ## How it works

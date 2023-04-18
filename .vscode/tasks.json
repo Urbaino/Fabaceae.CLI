@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src",
+                "${workspaceFolder}/src/CLI",
                 "--output=${workspaceFolder}/out",
                 "--configuration=Release",
                 "--runtime=win-x64",
