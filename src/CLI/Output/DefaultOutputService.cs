@@ -18,7 +18,7 @@ public class DefaultOutputService : IOutputService
             var comment = string.IsNullOrWhiteSpace(post.Comment) ? string.Empty : $"; {post.Comment}";
 
             return new[] {
-                $"{post.Date.ToShortDateString()} {post.Description}",
+                $"{post.Date:yyyy-MM-dd} {post.Description}",
                 $"\t{post.Account}\t\t{post.Amount:F2}{comment}",
                 "\t" + account.FullName,
                 string.Empty

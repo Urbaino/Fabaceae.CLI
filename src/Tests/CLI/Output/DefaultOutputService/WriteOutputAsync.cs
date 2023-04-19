@@ -1,15 +1,14 @@
+namespace Fabaceae.Tests.CLI.Output.DefaultOutputService;
+
 using Fabaceae.CLI;
 using FakeItEasy;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace Fabaceae.Tests.CLI.Output.DefaultOutputService;
-
 public sealed class WriteOutputAsync
 {
-
     private string _filename = "out.journal";
-    private Fabaceae.CLI.DefaultOutputService SUT => new(_filename);
+    private DefaultOutputService SUT => new(_filename);
 
     [Fact]
     public async Task Should_Write_Content_To_File()
