@@ -7,6 +7,6 @@ using System.Text.RegularExpressions;
 /// </summary>
 internal static partial class RegexExpressions
 {
-    [GeneratedRegex("^account (?:(\\w+):?)+(?!:)$")]
+    [GeneratedRegex("^account (?:(\\w+):?)+(?<!:)$")]
     public static partial Regex Account();
 }
