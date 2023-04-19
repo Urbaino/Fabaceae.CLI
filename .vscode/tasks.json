@@ -11,7 +11,26 @@
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "test",
+            "command": "dotnet",
+            "args": [
+                "test",
+                "${workspaceFolder}/src",
+                "--collect:\"XPlat Code Coverage\"",
+            ],
+            "type": "process",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
         },
         {
             "label": "publish-cli-win-exe",
@@ -19,7 +38,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src",
+                "${workspaceFolder}/src/CLI",
                 "--output=${workspaceFolder}/out",
                 "--configuration=Release",
                 "--runtime=win-x64",
