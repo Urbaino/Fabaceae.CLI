@@ -18,10 +18,10 @@ public class DefaultOutputService : IOutputService
             var comment = string.IsNullOrWhiteSpace(post.Comment) ? string.Empty : $"; {post.Comment}";
 
             return new[] {
-                $"{post.Date:yyyy-MM-dd} {post.Description}",
-                $"\t{post.Account}\t\t{post.Amount:F2}{comment}",
-                "\t" + account.FullName,
-                string.Empty
+                    $"{post.Date:yyyy-MM-dd} {post.Description}",
+                    $"\t{post.Account}\t\t{post.Amount.ToString("F2", CultureInfos.Default)}{comment}",
+                    "\t" + account.FullName,
+                    string.Empty
             };
         });
 
